@@ -1,16 +1,41 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { jwtVerify } from "jose";
 
-export function middleware(req: NextRequest) {
-    const isLoggedIn = req.cookies.get("token");
+const SECRET = new TextEncoder().encode(process.env.JWT_SECRET);
 
-    if (!isLoggedIn) {
-        return NextResponse.redirect(new URL("/", req.url));
+export async function middleware(req: NextRequest) {
+    const token = req.cookies.get("token")?.value;
+
+    const url = req.nextUrl.clone();
+
+    if (!token) {
+        if (req.nextUrl.pathname.startsWith("/private")) {
+        url.pathname = "/auth/login";
+        return NextResponse.redirect(url);
+        }
+        return NextResponse.next();
     }
 
-    return NextResponse.next();
+    try {
+        await jwtVerify(token, SECRET);
+        
+        if (req.nextUrl.pathname.startsWith("/auth")) {
+        url.pathname = "/private/dashboard";
+        return NextResponse.redirect(url);
+        }
+
+        return NextResponse.next();
+    } catch (e) {
+        const res = NextResponse.redirect("/auth/login");
+        res.cookies.set("token", "", { path: "/", maxAge: 0 });
+        return res;
+    }
 }
 
 export const config = {
-    matcher: ["/private/:path*"],
+    matcher: [
+        "/private/:path*",
+        "/auth/:path*",
+    ],
 };

@@ -1,5 +1,7 @@
 export default function LadingPage() {
     return (
-        <div></div>
+        <div>
+            public
+        </div>
     )
 }

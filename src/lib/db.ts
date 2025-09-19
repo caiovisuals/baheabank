@@ -10,12 +10,24 @@ export type User = {
   birthDate: Date;
   pin: string;
   balance: number;
-  piggys: Piggy[];
-  cards: Card[];
-  transactions: Transaction[];
+  transactions?: Transaction[];
+  piggys?: Piggy[];
+  cards?: Card[];
+  loans?: Loan[];
+  investments?: Investment[];
   emailVerified?: boolean;
   phoneVerified?: boolean;
+  profileImage?: string;
+  lastLogin?: Date;
   createdIn: Date;
+};
+
+export type Notification = {
+  id: number;
+  type: "transaction" | "security" | "system";
+  message: string;
+  read: boolean;
+  createdAt: Date;
 };
 
 export type TransactionStatus = "pending" | "completed" | "failed" | "cancelled";
@@ -43,6 +55,7 @@ export type CardStatus = "active" | "blocked" | "expired" | "cancelled";
 
 export type Card = {
   id: number;
+  type: "platinum" | "business" | "black";
   status: CardStatus;
   number: string;
   name: string;
@@ -57,9 +70,26 @@ export type LoanStatus = "requested" | "approved" | "rejected" | "active" | "pai
 export type Loan = {
   id: number;
   status: LoanStatus;
+  amount: number;
+  interestRate: number;
+  installments: number;
+  remainingDebt?: number;
   requestedAt: Date;
   approvedAt?: Date;
   paidAt?: Date;
+};
+
+export type InvestmentStatus = "active" | "closed" | "pending";
+
+export type Investment = {
+  id: number;
+  status: InvestmentStatus;
+  amount: number;
+  currentValue: number;
+  profitLoss?: number;
+  startDate: Date;
+  endDate?: Date;
+  description?: string;
 };
 
 export const users: User[] = [];

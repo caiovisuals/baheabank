@@ -19,7 +19,8 @@ export type User = {
   phoneVerified?: boolean;
   profileImage?: string;
   lastLogin?: Date;
-  createdIn: Date;
+  token?: string;
+  createdAt: Date;
 };
 
 export type Notification = {
@@ -48,7 +49,7 @@ export type Piggy = {
   name: string;
   value: number;
   goal?: number;
-  createdIn: Date;
+  createdAt: Date;
 };
 
 export type CardStatus = "active" | "blocked" | "expired" | "cancelled";
@@ -62,7 +63,7 @@ export type Card = {
   expiry: string;
   cvv: string;
   limit: number;
-  createdIn: Date;
+  createdAt: Date;
 };
 
 export type LoanStatus = "requested" | "approved" | "rejected" | "active" | "paid" | "default";

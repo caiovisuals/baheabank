@@ -9,17 +9,21 @@ export default function LandingPage() {
         </div>
         <div className="w-[54%] flex items-center justify-center">
           <nav className="flex flex-row items-center justify-center gap-8 whitespace-nowrap">
-            <a>Conta</a>
-            <a>Porquinho</a>
-            <a>Cartão de Crédito</a>
-            <a>Empréstimos e Financiamentos</a>
-            <a>Investimentos</a>
-            <a>Maquininha</a>
+            <a href="/account">Conta</a>
+            <a href="/piggys">Porquinho</a>
+            <a href="/cards">Cartão de Crédito</a>
+            <a href="/loans">Empréstimos e Financiamentos</a>
+            <a href="/investments">Investimentos</a>
+            <a href="/machine">Maquininha</a>
           </nav>
         </div>
         <div className="w-[22%] flex flex-row items-center gap-6 justify-end">
-          <button>Abra sua conta</button>
-          <button>Acesse sua conta</button>
+          <Link href="/register">
+            <button>Abra sua conta</button>
+          </Link>
+          <Link href="/login">
+            <button>Acesse sua conta</button>
+          </Link>
         </div>
       </header>
       
@@ -110,35 +114,35 @@ export default function LandingPage() {
           <div className="flex flex-col gap-2">
             <span>LINKS ÚTEIS</span>
             <nav className="flex flex-col">
-              <a>Conta</a>
-              <a>Porquinho</a>
-              <a>Cartão de Crédito</a>
-              <a>Empréstimos e Financiamentos</a>
-              <a>Investimentos</a>
-              <a>Maquininha</a>
+              <a href="/account">Conta</a>
+              <a href="/piggys">Porquinho</a>
+              <a href="/cards">Cartão de Crédito</a>
+              <a href="/loans">Empréstimos e Financiamentos</a>
+              <a href="/investments">Investimentos</a>
+              <a href="/machine">Maquininha</a>
             </nav>
           </div>
           <div className="flex flex-col gap-2">
             <span>DÚVIDAS</span>
             <nav className="flex flex-col">
-              <a>Fale conosco</a>
-              <a>Negocie sua dívida</a>
+              <a href="/contactus">Fale conosco</a>
+              <a href="/negotiateyourdebt">Negocie sua dívida</a>
             </nav>
           </div>
           <div className="flex flex-col gap-2">
             <span>SOBRE NÓS</span>
             <nav className="flex flex-col">
-              <a>Quem Somos</a>
-              <a>Trabalhe Conosco</a>
-              <a>Rancho dos Devs</a>
+              <a href="/whoweare">Quem Somos</a>
+              <a href="/workwithus">Trabalhe Conosco</a>
+              <a href="/devsranch">Rancho dos Devs</a>
             </nav>
           </div>
           <div className="flex flex-col gap-2">
             <span>REDES SOCIAIS</span>
             <nav className="flex flex-col">
-              <a href=""><img src="" alt=""/></a>
-              <a href=""><img src="" alt=""/></a>
-              <a href=""><img src="" alt=""/></a>
+              <a href="https://instagram.com"><img src="" alt="Instagram"/></a>
+              <a href="https://tiktok.com"><img src="" alt="TikTok"/></a>
+              <a href="https://youtube.com"><img src="" alt="Youtube"/></a>
             </nav>
           </div>
         </div>
@@ -152,9 +156,9 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="flex flex-row gap-8">
-            <Link href="/(others)/rates">Tarifas</Link>
-            <Link href="/(others)/terms">Termos de Uso</Link>
-            <Link href="/(others)/security">Segurança</Link>
+            <Link href="/rates">Tarifas</Link>
+            <Link href="/terms">Termos de Uso</Link>
+            <Link href="/security">Segurança</Link>
           </div>
         </div>
       </footer>

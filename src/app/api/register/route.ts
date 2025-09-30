@@ -1,32 +1,35 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
+import { SignJWT } from "jose";
 import { users, User } from "@/lib/db";
 
+const SECRET = new TextEncoder().encode(process.env.JWT_SECRET);
+
 function isValidEmail(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 function isValidCPF(cpf: string): boolean {
-  cpf = cpf.replace(/\D/g, "");
-  if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
+    cpf = cpf.replace(/\D/g, "");
+    if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
 
-  let sum = 0;
-  let remainder;
+    let sum = 0;
+    let remainder;
 
-  for (let i = 1; i <= 9; i++) {
-    sum += parseInt(cpf.substring(i - 1, i)) * (11 - i);
-  }
-  remainder = (sum * 10) % 11;
-  if (remainder === 10 || remainder === 11) remainder = 0;
-  if (remainder !== parseInt(cpf.substring(9, 10))) return false;
+    for (let i = 1; i <= 9; i++) {
+      sum += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+    }
+    remainder = (sum * 10) % 11;
+    if (remainder === 10 || remainder === 11) remainder = 0;
+    if (remainder !== parseInt(cpf.substring(9, 10))) return false;
 
-  sum = 0;
-  for (let i = 1; i <= 10; i++) {
-    sum += parseInt(cpf.substring(i - 1, i)) * (12 - i);
-  }
-  remainder = (sum * 10) % 11;
-  if (remainder === 10 || remainder === 11) remainder = 0;
-  return remainder === parseInt(cpf.substring(10, 11));
+    sum = 0;
+    for (let i = 1; i <= 10; i++) {
+      sum += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+    }
+    remainder = (sum * 10) % 11;
+    if (remainder === 10 || remainder === 11) remainder = 0;
+    return remainder === parseInt(cpf.substring(10, 11));
 }
 
 export async function POST(req: Request) {
@@ -66,5 +69,18 @@ export async function POST(req: Request) {
 
     users.push(newUser);
 
-    return NextResponse.json({ success: true, user: { id: newUser.id, email: newUser.email } });
+    const token = await new SignJWT({ id: newUser.id, email: newUser.email })
+        .setProtectedHeader({ alg: "HS256" })
+        .setExpirationTime("1h")
+        .sign(SECRET);
+
+    const res = NextResponse.json({ success: true, user: { id: newUser.id, email: newUser.email } });
+    res.cookies.set("token", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        path: "/",
+        maxAge: 60 * 60,
+    });
+
+    return res;
 }

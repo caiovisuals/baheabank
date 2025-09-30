@@ -8,16 +8,11 @@ const SECRET = new TextEncoder().encode(process.env.JWT_SECRET);
 export async function POST(req: Request) {
     const { email, password } = await req.json();
 
-    const user = users.find((u) => u.email === email);
-
-    if (!user) {
-        return NextResponse.json({ error: "Usuário não encontrado" }, { status: 401 });
-    }
+    const user = users.find((u) => u.email === email.toLowerCase());
+    if (!user) return NextResponse.json({ error: "Usuário não encontrado" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) {
-        return NextResponse.json({ error: "Senha incorreta" }, { status: 401 });
-    }
+    if (!valid) return NextResponse.json({ error: "Senha incorreta" }, { status: 401 });
 
     const token = await new SignJWT({ id: user.id, email: user.email })
         .setProtectedHeader({ alg: "HS256" })

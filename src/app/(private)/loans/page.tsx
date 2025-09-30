@@ -1,4 +1,4 @@
-export default function Piggys() {
+export default function Loans() {
     return (
         <div>
         </div>

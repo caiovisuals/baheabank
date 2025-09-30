@@ -8,7 +8,12 @@ export async function middleware(req: NextRequest) {
     const token = req.cookies.get("token")?.value;
     const url = req.nextUrl.clone();
 
-    const isPrivate = req.nextUrl.pathname.startsWith("/private");
+    const isPrivate = [
+        "/dashboard",
+        "/help",
+        "/piggys",
+        "/settings",
+    ].some((path) => req.nextUrl.pathname.startsWith(path));
     const isAuthPage = req.nextUrl.pathname.startsWith("/auth");
 
     if (!token) {
@@ -40,5 +45,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-    matcher: ["/private/:path*", "/auth/:path*"],
+    matcher: ["/dashboard/:path*", "/help/:path*", "/piggys/:path*", "/settings/:path*", "/auth/:path*"],
 };

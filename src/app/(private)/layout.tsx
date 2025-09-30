@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function PrivateLayout({children,}: Readonly<{children: React.ReactNode;}>) {
     return (
         <html lang="pt-br">
-            <body className="flex flex-row">
+            <body className="w-screen h-screen flex flex-col-reverse md:flex-row justify-between">
                 <Navbar/>
                 {children}
             </body>

@@ -9,7 +9,7 @@ export default function LandingPage() {
 
     async function handleAccessAccount() {
         try {
-            const res = await fetch("/api/me");
+            const res = await fetch("/api/me", { credentials: "include" });
             if (res.ok) {
                 router.push("/dashboard");
             } else {
@@ -29,12 +29,12 @@ export default function LandingPage() {
                 </div>
                 <div className="w-[54%] flex items-center justify-center">
                   <nav className="flex flex-row items-center justify-center gap-8 whitespace-nowrap">
-                    <a href="/account">Conta</a>
-                    <a href="/piggys">Porquinho</a>
-                    <a href="/cards">Cartão de Crédito</a>
-                    <a href="/loans">Empréstimos e Financiamentos</a>
-                    <a href="/investments">Investimentos</a>
-                    <a href="/machine">Maquininha</a>
+                    <a href="/products/account">Conta</a>
+                    <a href="/products/piggys">Porquinho</a>
+                    <a href="/products/cards">Cartão de Crédito</a>
+                    <a href="/products/loans">Empréstimos e Financiamentos</a>
+                    <a href="/products/investments">Investimentos</a>
+                    <a href="/products/machine">Maquininha</a>
                   </nav>
                 </div>
                 <div className="w-[22%] flex flex-row items-center gap-6 justify-end">
@@ -134,27 +134,27 @@ export default function LandingPage() {
                   <div className="flex flex-col gap-2">
                     <span>LINKS ÚTEIS</span>
                     <nav className="flex flex-col">
-                      <a href="/account">Conta</a>
-                      <a href="/piggys">Porquinho</a>
-                      <a href="/cards">Cartão de Crédito</a>
-                      <a href="/loans">Empréstimos e Financiamentos</a>
-                      <a href="/investments">Investimentos</a>
-                      <a href="/machine">Maquininha</a>
+                      <a href="/products/account">Conta</a>
+                      <a href="/products/piggys">Porquinho</a>
+                      <a href="/products/cards">Cartão de Crédito</a>
+                      <a href="/products/loans">Empréstimos e Financiamentos</a>
+                      <a href="/products/investments">Investimentos</a>
+                      <a href="/products/machine">Maquininha</a>
                     </nav>
                   </div>
                   <div className="flex flex-col gap-2">
                     <span>DÚVIDAS</span>
                     <nav className="flex flex-col">
-                      <a href="/contactus">Fale conosco</a>
-                      <a href="/negotiateyourdebt">Negocie sua dívida</a>
+                      <a href="/help/contactus">Fale conosco</a>
+                      <a href="/help/negotiateyourdebt">Negocie sua dívida</a>
                     </nav>
                   </div>
                   <div className="flex flex-col gap-2">
                     <span>SOBRE NÓS</span>
                     <nav className="flex flex-col">
-                      <a href="/whoweare">Quem Somos</a>
-                      <a href="/workwithus">Trabalhe Conosco</a>
-                      <a href="/devsranch">Rancho dos Devs</a>
+                      <a href="/about/whoweare">Quem Somos</a>
+                      <a href="/about/workwithus">Trabalhe Conosco</a>
+                      <a href="/about/devsranch">Rancho dos Devs</a>
                     </nav>
                   </div>
                   <div className="flex flex-col gap-2">

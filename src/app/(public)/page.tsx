@@ -38,10 +38,10 @@ export default function LandingPage() {
                   </nav>
                 </div>
                 <div className="w-[22%] flex flex-row items-center gap-6 justify-end">
-                  <Link href="/register">
-                    <button>Abra sua conta</button>
+                  <Link href="/register" className="cursor-pointer">
+                    <button className="cursor-pointer">Abra sua conta</button>
                   </Link>
-                  <button onClick={handleAccessAccount}>
+                  <button onClick={handleAccessAccount} className="cursor-pointer">
                     Acesse sua conta
                   </button>
                 </div>
@@ -56,10 +56,12 @@ export default function LandingPage() {
                   Controle suas finanças, crie cofrinhos, faça transferências instantâneas e acompanhe tudo em tempo real — sem taxas escondidas.
                 </p>
                 <div className="flex gap-4">
-                  <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-2xl shadow-lg transition">
-                    Abrir conta gratuita
-                  </button>
-                  <button className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium rounded-2xl shadow-lg transition">
+                  <Link href="/register" className="cursor-pointer">
+                    <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-2xl shadow-lg transition cursor-pointer">
+                      Abrir conta gratuita
+                    </button>
+                  </Link>
+                  <button className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium rounded-2xl shadow-lg transition cursor-pointer">
                     Saiba mais
                   </button>
                 </div>
@@ -123,13 +125,15 @@ export default function LandingPage() {
                 <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
                   Junte-se a milhares de usuários que já estão economizando tempo e dinheiro com nosso banco digital.
                 </p>
-                <button className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-2xl shadow-lg hover:bg-gray-100 transition">
-                  Criar minha conta agora
-                </button>
+                <Link href="/register" className="cursor-pointer">
+                  <button className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-2xl shadow-lg hover:bg-gray-100 transition cursor-pointer">
+                    Criar minha conta agora
+                  </button>
+                </Link>
             </section>
 
             {/* Footer */}
-            <footer className="px-85 py-24 flex flex-col gap-8">
+            <footer className="px-85 py-24 flex flex-col gap-8">s
                 <div className="flex flex-row gap-25">
                   <div className="flex flex-col gap-2">
                     <span>LINKS ÚTEIS</span>

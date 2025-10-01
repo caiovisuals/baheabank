@@ -28,12 +28,12 @@ export async function middleware(req: NextRequest) {
         await jwtVerify(token, SECRET);
 
         if (isAuthPage) {
-            url.pathname = "/private/dashboard";
+            url.pathname = "/dashboard";
             return NextResponse.redirect(url);
         }
 
         return NextResponse.next();
-    } catch {
+    } catch (err) {
         if (isPrivate || isAuthPage) {
             url.pathname = "/auth/login";
             const res = NextResponse.redirect(url);
@@ -45,5 +45,16 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-    matcher: ["/dashboard/:path*", "/help/:path*", "/piggys/:path*", "/settings/:path*", "/auth/:path*"],
+    matcher: [
+    "/dashboard",
+    "/dashboard/:path*",
+    "/help",
+    "/help/:path*",
+    "/piggys",
+    "/piggys/:path*",
+    "/settings",
+    "/settings/:path*",
+    "/auth",
+    "/auth/:path*",
+    ],
 };

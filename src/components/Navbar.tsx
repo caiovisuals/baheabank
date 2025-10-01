@@ -2,9 +2,27 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import type { User } from "@/lib/db";
 
 export default function Navbar() {
     const pathname = usePathname();
+    const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+        async function fetchUser() {
+        try {
+            const res = await fetch("/api/me", { credentials: "include" });
+            if (res.ok) {
+            const data = await res.json();
+            setUser(data);
+            }
+        } catch (err) {
+            console.error("Erro ao buscar usuário:", err);
+        }
+        }
+        fetchUser();
+    }, []);
 
     const navItems = [
         { label: "Dashboard", href: "/dashboard" },
@@ -32,7 +50,17 @@ export default function Navbar() {
                     ))}
                 </nav>
             </div>
-            <div>Conta</div>
+            {user ? (
+                <div className="flex flex-row gap-2:">
+                    <img src={user.avatarUrl || "/default-avatar.png"} alt="Avatar" className="w-10 h-10 rounded-full object-cover border border-white"></img>
+                    <div className="flex flex-col items-center justify-start">
+                        <span className="ml-2">{user.fullName}</span>
+                        <p>{user.email}</p>
+                    </div>
+                </div>
+            ) : (
+                <div>Carregando...</div>
+            )}
         </aside>
     )
 }

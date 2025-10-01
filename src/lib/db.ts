@@ -2,6 +2,7 @@ export type User = {
   id: number;
   fullName: string;
   roles?: string[];
+  avatarUrl?: string;
   email: string;
   phone: string;
   password: string;

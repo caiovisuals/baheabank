@@ -24,6 +24,11 @@ function formatPhone(value: string) {
     return value;
 }
 
+function isValidPassword(password: string): boolean {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+    return regex.test(password);
+}
+
 function isValidEmail(email: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -72,6 +77,12 @@ export default function RegisterPage() {
         e.preventDefault();
         setError("");
         setLoading(true);
+
+        if (!isValidPassword(form.password)) {
+            setError("A senha deve ter no mínimo 8 caracteres, incluindo maiúsculas, minúsculas, número e símbolo");
+            setLoading(false);
+            return;
+        }
 
         if (!isValidEmail(form.email)) {
             setError("Email inválido");
@@ -128,6 +139,13 @@ export default function RegisterPage() {
                 value={form.rg} onChange={(e) => setForm({ ...form, rg: e.target.value.replace(/\D/g, "") })} />
                 <button type="submit" disabled={loading} className="w-full bg-blue-600 py-3 rounded hover:bg-blue-500">
                     {loading ? "Registrando..." : "Registrar"}
+                </button>
+                <button
+                type="button"
+                onClick={() => router.push("/login")}
+                className="py-1.5 px-3 rounded bg-gray-600 hover:bg-gray-500"
+                >
+                Já tem conta?
                 </button>
             </form>
         </div>

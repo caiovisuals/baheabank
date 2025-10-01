@@ -57,6 +57,13 @@ export default function LoginPage() {
                 <button type="submit" disabled={loading} className="w-full bg-blue-600 py-3 rounded hover:bg-blue-500">
                 {loading ? "Entrando..." : "Entrar"}
                 </button>
+                <button
+                type="button"
+                onClick={() => router.push("/register")}
+                className="py-1.5 px-3 rounded bg-gray-600 hover:bg-gray-500"
+                >
+                Ainda não tem conta?
+                </button>
             </form>
         </div>
     );

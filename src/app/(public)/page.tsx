@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { isUserLogged } from "@/utils/auth";
 
 export default function LandingPage() {
     const router = useRouter();
@@ -133,7 +132,7 @@ export default function LandingPage() {
             </section>
 
             {/* Footer */}
-            <footer className="px-85 py-24 flex flex-col gap-8">s
+            <footer className="px-85 py-24 flex flex-col gap-8">
                 <div className="flex flex-row gap-25">
                   <div className="flex flex-col gap-2">
                     <span>LINKS ÚTEIS</span>

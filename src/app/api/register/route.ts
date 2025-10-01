@@ -5,6 +5,11 @@ import { users, User } from "@/lib/db";
 
 const SECRET = new TextEncoder().encode(process.env.JWT_SECRET);
 
+function isValidPassword(password: string): boolean {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+    return regex.test(password);
+}
+
 function isValidEmail(email: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -37,6 +42,13 @@ export async function POST(req: Request) {
 
     if (!email || !password || !phone || !cpf || !pin) {
         return NextResponse.json({ error: "Preencha todos os campos obrigatórios" }, { status: 400 });
+    }
+
+    if (!isValidPassword(password)) {
+        return NextResponse.json(
+            { error: "A senha deve ter no mínimo 8 caracteres, incluindo maiúsculas, minúsculas, número e símbolo" },
+            { status: 400 }
+        );
     }
 
     if (!isValidEmail(email)) {

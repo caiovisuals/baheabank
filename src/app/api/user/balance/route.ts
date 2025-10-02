@@ -13,8 +13,6 @@ export async function GET(req: Request) {
     const user = getUserByToken(token);
     if (!user) return NextResponse.json({ error: "Usuário não autenticado" }, { status: 401 });
 
-    const balance = typeof user.balance === "number" ? user.balance : 0;
-
     return NextResponse.json({ balance: user.balance });
 }
 

@@ -77,7 +77,7 @@ export default function Piggys() {
     }, [])
 
     return (
-        <div className="p-8 flex flex-col size-full">
+        <div className="p-10 flex flex-col size-full">
             <div>
                 <h2 className="text-2xl font-semibold">Total reservado</h2>
                 <span className="text-4xl font-bold">

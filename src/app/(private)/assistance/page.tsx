@@ -31,8 +31,8 @@ export default function Assistance() {
     }
 
     return (
-        <div className="p-8 flex flex-col size-full">
-            <h1 className="text-3xl font-bold mb-6">Assistência ao Usuário</h1>
+        <div className="p-10 flex flex-col size-full">
+            <h1 className="text-2xl font-semibold mb-4">Assistência ao Usuário</h1>
 
             <form onSubmit={handleSubmit} className="mb-8 flex flex-col gap-4">
                 <input
@@ -84,9 +84,10 @@ export default function Assistance() {
             {/* Contato direto */}
             <div>
                 <h2 className="text-2xl font-semibold mb-4">Contato Direto</h2>
-                <p>Email: suporte@exemplo.com</p>
-                <p>Telefone: +55 71 99999-9999</p>
-                <p>Chat: Disponível no canto inferior direito do site</p>
+                <div>
+                    <p>Email: suporte@exemplo.com</p>
+                    <p>Telefone: +55 71 99999-9999</p>
+                </div>
             </div>
         </div>
     );

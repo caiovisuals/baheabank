@@ -13,15 +13,26 @@ export async function GET(req: NextRequest) {
 }
 
 export async function PATCH(req: NextRequest) {
-    const { userId, fullName, email, phone } = await req.json();
-    if (!userId) return NextResponse.json({ error: "User ID is required" }, { status: 400 });
+    try {
+        const { userId, fullName, email, phone, avatarUrl } = await req.json();
 
-    const userIndex = users.findIndex(u => u.id === userId);
-    if (userIndex === -1) return NextResponse.json({ error: "User not found" }, { status: 404 });
+        if (!userId) {
+            return NextResponse.json({ error: "User ID is required" }, { status: 400 });
+        }
 
-    if (fullName) users[userIndex].fullName = fullName;
-    if (email) users[userIndex].email = email;
-    if (phone) users[userIndex].phone = phone;
+        const userIndex = users.findIndex(u => u.id === userId);
+        if (userIndex === -1) {
+            return NextResponse.json({ error: "User not found" }, { status: 404 });
+        }
 
-    return NextResponse.json(users[userIndex]);
+        if (fullName !== undefined) users[userIndex].fullName = fullName;
+        if (email !== undefined) users[userIndex].email = email;
+        if (phone !== undefined) users[userIndex].phone = phone;
+        if (avatarUrl !== undefined) users[userIndex].avatarUrl = avatarUrl;
+
+        return NextResponse.json(users[userIndex]);
+    } catch (error) {
+        console.error(error);
+        return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+    }
 }

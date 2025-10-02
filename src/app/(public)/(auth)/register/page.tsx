@@ -29,6 +29,15 @@ function isValidPassword(password: string): boolean {
     return regex.test(password);
 }
 
+function isAdult(birthDate: Date): boolean {
+    const today = new Date();
+    const age = today.getFullYear() - birthDate.getFullYear();
+    const hasBirthdayPassed =
+        today.getMonth() > birthDate.getMonth() ||
+        (today.getMonth() === birthDate.getMonth() && today.getDate() >= birthDate.getDate());
+    return age > 18 || (age === 18 && hasBirthdayPassed);
+}
+
 function isValidEmail(email: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -59,14 +68,14 @@ function isValidCPF(cpf: string): boolean {
 export default function RegisterPage() {
     const router = useRouter();
     const [form, setForm] = useState({
+        fullName: "",
         email: "",
         password: "",
         phone: "",
         cpf: "",
         pin: "",
         rg: "",
-        fullName: "",
-        birthDate: new Date(),
+        birthDate: null as unknown as Date,
         balance: 0,
         createdAt: new Date(),
     });
@@ -80,6 +89,12 @@ export default function RegisterPage() {
 
         if (!isValidPassword(form.password)) {
             setError("A senha deve ter no mínimo 8 caracteres, incluindo maiúsculas, minúsculas, número e símbolo");
+            setLoading(false);
+            return;
+        }
+
+        if (!isAdult(new Date(form.birthDate))) {
+            setError("Você deve ter pelo menos 18 anos para criar uma conta");
             setLoading(false);
             return;
         }
@@ -125,6 +140,8 @@ export default function RegisterPage() {
             <form onSubmit={handleSubmit} className="bg-gray-800 p-8 rounded-2xl w-full max-w-md space-y-4 shadow-lg">
                 <h1 className="text-2xl font-bold text-blue-400 mb-4">Registrar</h1>
                 {error && <p className="text-red-500">{error}</p>}
+                <input type="name" placeholder="Nome Completo" className="w-full p-3 rounded bg-gray-700" 
+                value={form.fullName} onChange={(e) => setForm({ ...form, fullName: e.target.value })} />
                 <input type="email" placeholder="Email" className="w-full p-3 rounded bg-gray-700" 
                 value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
                 <input type="password" placeholder="Senha" className="w-full p-3 rounded bg-gray-700" 
@@ -133,8 +150,12 @@ export default function RegisterPage() {
                 value={form.phone} onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value) })} />
                 <input type="text" placeholder="CPF" className="w-full p-3 rounded bg-gray-700" 
                 value={form.cpf} onChange={(e) => setForm({ ...form, cpf: formatCPF(e.target.value) })} />
-                <input type="text" placeholder="PIN" className="w-full p-3 rounded bg-gray-700" 
-                value={form.pin} onChange={(e) => setForm({ ...form, pin: e.target.value.replace(/\D/g, "").slice(0, 4) })} />
+                <div className="flex flex-row gap-4">
+                    <input type="text" placeholder="PIN" className="w-full p-3 rounded bg-gray-700" 
+                    value={form.pin} onChange={(e) => setForm({ ...form, pin: e.target.value.replace(/\D/g, "").slice(0, 4) })} />
+                    <input type="date" placeholder="" className="w-full p-3 rounded bg-gray-700" 
+                    value={form.birthDate ? new Date(form.birthDate).toISOString().split("T")[0] : ""} onChange={(e) => setForm({ ...form, birthDate: new Date(e.target.value) })}/>
+                </div>
                 <input type="text" placeholder="RG (opcional)" className="w-full p-3 rounded bg-gray-700" 
                 value={form.rg} onChange={(e) => setForm({ ...form, rg: e.target.value.replace(/\D/g, "") })} />
                 <button type="submit" disabled={loading} className="w-full bg-blue-600 py-3 rounded hover:bg-blue-500">

@@ -10,6 +10,15 @@ function isValidPassword(password: string): boolean {
     return regex.test(password);
 }
 
+function isAdult(birthDate: Date): boolean {
+    const today = new Date();
+    const age = today.getFullYear() - birthDate.getFullYear();
+    const hasBirthdayPassed =
+        today.getMonth() > birthDate.getMonth() ||
+        (today.getMonth() === birthDate.getMonth() && today.getDate() >= birthDate.getDate());
+    return age > 18 || (age === 18 && hasBirthdayPassed);
+}
+
 function isValidEmail(email: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -49,6 +58,10 @@ export async function POST(req: Request) {
             { error: "A senha deve ter no mínimo 8 caracteres, incluindo maiúsculas, minúsculas, número e símbolo" },
             { status: 400 }
         );
+    }
+
+    if (!isAdult(new Date(birthDate))) {
+        return NextResponse.json({ error: "É necessário ter pelo menos 18 anos para criar uma conta" }, { status: 400 });
     }
 
     if (!isValidEmail(email)) {

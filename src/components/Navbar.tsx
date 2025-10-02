@@ -33,9 +33,8 @@ export default function Navbar() {
     ];
 
     return (
-        <aside className="w-full h-25 md:w-64 md:h-full bg-blue-600 text-white flex flex-row md:flex-col items-center md:items-start jutify-center md:justify-between p-6">
+        <aside className="w-full h-25 md:w-64 md:h-full bg-blue-600 text-white flex flex-row md:flex-col items-center md:items-start jutify-center md:justify-between p-6 gap-6">
             <div className="flex md:w-full flex-row md:flex-col items-center md:items-start gap-5">
-                <div className="text-2xl font-bold md:mb-5">Baheabank</div>
                 <nav className="flex flex-row md:flex-col md:w-full gap-2">
                     {navItems.map((item) => (
                         <Link
@@ -50,17 +49,13 @@ export default function Navbar() {
                     ))}
                 </nav>
             </div>
-            {user ? (
-                <div className="flex flex-row gap-2:">
-                    <img src={user.avatarUrl || "/default-avatar.png"} alt="Avatar" className="w-10 h-10 rounded-full object-cover border border-white"></img>
-                    <div className="flex flex-col items-center justify-start">
-                        <span className="ml-2">{user.fullName}</span>
-                        <p>{user.email}</p>
-                    </div>
+            <div className="flex flex-row gap-2 justify-center items-center">
+                <img src={user?.avatarUrl || "/default-avatar.png"} alt="Avatar" className="w-10 h-10 rounded-full object-cover border border-white"></img>
+                <div className="flex flex-col items-start justify-center">
+                    <span className="leading-tight">{user?.fullName || "Nome do usuário"}</span>
+                    <p className="text-[14px] leading-tight">{user?.email || "Email do usuário"}</p>
                 </div>
-            ) : (
-                <div>Carregando...</div>
-            )}
+            </div>
         </aside>
     )
 }

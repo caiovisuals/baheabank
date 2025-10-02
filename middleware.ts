@@ -45,16 +45,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-    matcher: [
-    "/dashboard",
-    "/dashboard/:path*",
-    "/help",
-    "/help/:path*",
-    "/piggys",
-    "/piggys/:path*",
-    "/settings",
-    "/settings/:path*",
-    "/auth",
-    "/auth/:path*",
-    ],
+    matcher: ["/((?!auth|public).*)"],
 };

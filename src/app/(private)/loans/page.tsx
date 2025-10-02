@@ -1,6 +1,6 @@
 export default function Loans() {
     return (
-        <div>
+        <div className="flex p-8 size-full">
         </div>
     )
 }

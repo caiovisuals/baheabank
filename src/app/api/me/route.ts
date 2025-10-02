@@ -13,9 +13,8 @@ export async function GET(req: Request) {
 
     try {
         const { payload } = await jwtVerify(token, SECRET);
-
         const user = users.find((u) => u.id === payload.id);
-        
+    
         if (!user) {
             return NextResponse.json({ user: null }, { status: 404 });
         }
@@ -28,7 +27,7 @@ export async function GET(req: Request) {
         };
 
         return NextResponse.json({ user: safeUser });
-    } catch (err) {
+    } catch {
         return NextResponse.json({ user: null }, { status: 401 });
     }
 }

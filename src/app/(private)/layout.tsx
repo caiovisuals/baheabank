@@ -1,19 +1,15 @@
 import Navbar from "@/components/Navbar";
-import { Metadata } from "next";
+import Header from "@/components/Header";
 import "../globals.css";
-
-export const metadata: Metadata = {
-    title: "",
-    description: "",
-};
 
 export default function PrivateLayout({children,}: Readonly<{children: React.ReactNode;}>) {
     return (
-        <html lang="pt-br">
-            <body className="w-screen h-screen flex flex-col-reverse md:flex-row justify-between">
+        <div className="flex flex-col w-full h-screen">
+            <Header/>
+            <div className="w-full h-full flex flex-col-reverse md:flex-row justify-between">
                 <Navbar/>
                 {children}
-            </body>
-        </html>
+            </div>
+        </div>
     );
 }

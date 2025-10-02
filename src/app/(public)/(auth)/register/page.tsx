@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 function formatCPF(value: string) {
     value = value.replace(/\D/g, "");
@@ -41,6 +42,7 @@ function isAdult(birthDate: Date): boolean {
 function isValidEmail(email: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
+
 
 function isValidCPF(cpf: string): boolean {
     cpf = cpf.replace(/\D/g, "");
@@ -137,6 +139,9 @@ export default function RegisterPage() {
 
     return (
         <div className="flex justify-center items-center h-screen bg-gray-900 text-white">
+            <Link href="/" className="absolute top-6 left-6 text-xl font-bold text-blue-400">
+                logo
+            </Link>
             <form onSubmit={handleSubmit} className="bg-gray-800 p-8 rounded-2xl w-full max-w-md space-y-4 shadow-lg">
                 <h1 className="text-2xl font-bold text-blue-400 mb-4">Registrar</h1>
                 {error && <p className="text-red-500">{error}</p>}
@@ -147,7 +152,7 @@ export default function RegisterPage() {
                 <input type="password" placeholder="Senha" className="w-full p-3 rounded bg-gray-700" 
                 value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
                 <input type="text" placeholder="Telefone" className="w-full p-3 rounded bg-gray-700" 
-                value={form.phone} onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value) })} />
+                value={form.phone} onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value).slice(0, 17) })} />
                 <input type="text" placeholder="CPF" className="w-full p-3 rounded bg-gray-700" 
                 value={form.cpf} onChange={(e) => setForm({ ...form, cpf: formatCPF(e.target.value) })} />
                 <div className="flex flex-row gap-4">

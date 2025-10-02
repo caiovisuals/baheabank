@@ -200,10 +200,16 @@ export default function LandingPage() {
                     </div>
                     <div className="flex flex-col gap-2">
                         <span>REDES SOCIAIS</span>
-                        <nav className="flex flex-col">
-                            <a href="https://instagram.com"><img src="" alt="Instagram"/></a>
-                            <a href="https://tiktok.com"><img src="" alt="TikTok"/></a>
-                            <a href="https://youtube.com"><img src="" alt="Youtube"/></a>
+                        <nav className="flex flex-row gap-2">
+                            <a href="https://instagram.com">
+                                <img src="social-media-icons/instagram.png" alt="Instagram" className="size-8 object-contain aspect-square"/>
+                            </a>
+                            <a href="https://tiktok.com">
+                                <img src="social-media-icons/tiktok.png" alt="TikTok" className="size-8 object-contain aspect-square"/>
+                            </a>
+                            <a href="https://youtube.com">
+                                <img src="social-media-icons/youtube.png" alt="Youtube" className="size-8 object-contain aspect-square"/>
+                            </a>
                         </nav>
                     </div>
                 </div>

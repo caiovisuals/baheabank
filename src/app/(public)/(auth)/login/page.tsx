@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function LoginPage() {
     const router = useRouter();
@@ -37,6 +38,9 @@ export default function LoginPage() {
 
     return (
         <div className="flex justify-center items-center h-screen bg-gray-900 text-white">
+            <Link href="/" className="absolute top-6 left-6 text-xl font-bold text-blue-400">
+                logo
+            </Link>
             <form onSubmit={handleSubmit} className="bg-gray-800 p-8 rounded-2xl w-full max-w-md space-y-4 shadow-lg">
                 <h1 className="text-2xl font-bold text-blue-400 mb-4">Login</h1>
                 {error && <p className="text-red-500">{error}</p>}

@@ -29,10 +29,13 @@ export default function Header() {
             </Link>
             <div className="w-[60%] flex justify-center items-center">
             </div>
-            <div className="w-[20%] flex flex-row gap-2 justify-end items-center">
-                <img src={user?.avatarUrl || "/default-avatar.png"} alt="Avatar" className="w-10 h-10 rounded-full object-cover border border-white" draggable="false"></img>
-                <span>{user?.fullName || "Nome do usuário"}</span>
-            </div>
+            <Link href="/settings" className="w-[20%] flex flex-row gap-2 justify-end items-center">
+                <img src={user?.avatarUrl || "/default-avatar.png"} alt="Avatar" className="size-10 rounded-full object-cover border-2 border-white" draggable="false"></img>
+                <div className="flex flex-col items-start justify-center">
+                    <span className="leading-tight">{user?.fullName || "Nome do usuário"}</span>
+                    <p className="text-[14px] leading-tight">Ver seu perfil</p>
+                </div>
+            </Link>
         </header>
     )
 }

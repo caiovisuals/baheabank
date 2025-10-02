@@ -34,7 +34,6 @@ export default function Assistance() {
         <div className="p-8 flex flex-col size-full">
             <h1 className="text-3xl font-bold mb-6">Assistência ao Usuário</h1>
 
-            {/* Formulário de contato */}
             <form onSubmit={handleSubmit} className="mb-8 flex flex-col gap-4">
                 <input
                     type="text"

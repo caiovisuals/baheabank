@@ -23,16 +23,16 @@ export default function Dashboard() {
     return (
         <div className="p-8 flex flex-row justify-between items-start h-full w-full gap-6">
             <div className="p-6">
-                <p className="">Saldo disponível</p>
-                <p className="text-2xl font-bold">R$ {formatCurrency(balance)}</p>
+                <p className="text-xl font-semibold leading-tight">Saldo disponível</p>
+                <p className="text-3xl font-bold">R$ {formatCurrency(balance)}</p>
             </div>
             <div className="p-6">
-                <p className="">Transações completas</p>
-                <p className="text-2xl font-bold">X transações</p>
+                <p className="text-xl font-semibold leading-tight">Transações completas</p>
+                <p className="text-3xl font-bold">X transações</p>
             </div>
             <div className="p-6">
-                <p className="">Sua última atividade</p>
-                <p className="text-2xl font-bold">Lorem ipsum dolor sit</p>
+                <p className="text-xl font-semibold leading-tight">Sua última atividade</p>
+                <p className="text-3xl font-bold">Lorem ipsum dolor sit</p>
             </div>
         </div>
     )

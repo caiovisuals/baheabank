@@ -27,7 +27,7 @@ export default function LoginPage() {
         if (!res.ok) {
             setError(data.error || "Erro ao logar");
         } else {
-            router.push("/private/dashboard");
+            router.push("/dashboard");
         }
         } catch {
             setError("Erro de rede");

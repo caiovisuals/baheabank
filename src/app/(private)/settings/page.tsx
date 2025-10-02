@@ -32,9 +32,18 @@ export default function Settings() {
     }
 
     return (
-        <div className="flex p-8 size-full">
+        <div className="flex flex-col p-8 size-full gap-8">
+            <div className="flex items-center justify-start">
+                <div className="flex flex-row gap-4 justify-center items-center">
+                    <img src={user?.avatarUrl || "/default-avatar.png"} alt="Avatar" className="size-20 rounded-full object-cover" draggable="false"></img>
+                    <div className="flex flex-col items-start justify-center">
+                        <span className="text-2xl font-semibold leading-tight">{user?.fullName || "Nome do usuário"}</span>
+                        <p className="text-lg leading-tight">{user?.email || "Email do usuário"}</p>
+                    </div>
+                </div>
+            </div>
             <div>                
-                <button onClick={handleSave} className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+                <button onClick={handleSave} className="bg-blue-500 text-white py-2 px-8 rounded hover:bg-blue-600 transition cursor-pointer">
                     Salvar
                 </button>
             </div>

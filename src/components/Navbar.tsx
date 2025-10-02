@@ -50,7 +50,7 @@ export default function Navbar() {
                 </nav>
             </div>
             <div className="flex flex-row gap-2 justify-center items-center">
-                <img src={user?.avatarUrl || "/default-avatar.png"} alt="Avatar" className="w-10 h-10 rounded-full object-cover border border-white" draggable="false"></img>
+                <img src={user?.avatarUrl || "/default-avatar.png"} alt="Avatar" className="size-10 rounded-full object-cover border-2 border-white" draggable="false"></img>
                 <div className="flex flex-col items-start justify-center">
                     <span className="leading-tight">{user?.fullName || "Nome do usuário"}</span>
                     <p className="text-[14px] leading-tight">{user?.email || "Email do usuário"}</p>

@@ -22,6 +22,7 @@ export async function GET(req: Request) {
         const safeUser = {
             id: user.id,
             email: user.email,
+            phone: user.phone,
             fullName: user.fullName,
             avatarUrl: user.avatarUrl,
         };

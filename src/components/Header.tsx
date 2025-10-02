@@ -30,7 +30,7 @@ export default function Header() {
             <div className="w-[60%] flex justify-center items-center">
             </div>
             <div className="w-[20%] flex flex-row gap-2 justify-end items-center">
-                <img src={user?.avatarUrl || "/default-avatar.png"} alt="Avatar" className="w-10 h-10 rounded-full object-cover border border-white"></img>
+                <img src={user?.avatarUrl || "/default-avatar.png"} alt="Avatar" className="w-10 h-10 rounded-full object-cover border border-white" draggable="false"></img>
                 <span>{user?.fullName || "Nome do usuário"}</span>
             </div>
         </header>

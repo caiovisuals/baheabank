@@ -9,8 +9,11 @@ export async function middleware(req: NextRequest) {
     const url = req.nextUrl.clone();
 
     const isPrivate = [
+        "assistance",
+        "/cards",
         "/dashboard",
-        "/help",
+        "/investments",
+        "loans",
         "/piggys",
         "/settings",
     ].some((path) => req.nextUrl.pathname.startsWith(path));
@@ -18,7 +21,7 @@ export async function middleware(req: NextRequest) {
 
     if (!token) {
         if (isPrivate) {
-            url.pathname = "/auth/login";
+            url.pathname = "/login";
             return NextResponse.redirect(url);
         }
         return NextResponse.next();
@@ -35,7 +38,7 @@ export async function middleware(req: NextRequest) {
         return NextResponse.next();
     } catch (err) {
         if (isPrivate || isAuthPage) {
-            url.pathname = "/auth/login";
+            url.pathname = "/login";
             const res = NextResponse.redirect(url);
             res.cookies.set("token", "", { path: "/", maxAge: 0 });
             return res;

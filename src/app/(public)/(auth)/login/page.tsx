@@ -41,7 +41,7 @@ export default function LoginPage() {
             <Link href="/" className="absolute top-6 left-6 text-xl font-bold text-blue-400">
                 logo
             </Link>
-            <form onSubmit={handleSubmit} className="bg-gray-800 p-8 rounded-2xl w-full max-w-md space-y-4 shadow-lg">
+            <form onSubmit={handleSubmit} className="bg-gray-800 p-8 rounded-2xl w-full max-w-lg space-y-4 shadow-lg">
                 <h1 className="text-2xl font-bold text-blue-400 mb-4">Login</h1>
                 {error && <p className="text-red-500">{error}</p>}
                 <input
@@ -61,13 +61,22 @@ export default function LoginPage() {
                 <button type="submit" disabled={loading} className="w-full bg-blue-600 py-3 rounded hover:bg-blue-500">
                 {loading ? "Entrando..." : "Entrar"}
                 </button>
-                <button
-                type="button"
-                onClick={() => router.push("/register")}
-                className="py-1.5 px-3 rounded bg-gray-600 hover:bg-gray-500"
-                >
-                Ainda não tem conta?
-                </button>
+                <div className="flex flex-row gap-4">
+                    <button
+                    type="button"
+                    onClick={() => router.push("/register")}
+                    className="py-1.5 px-3 rounded bg-gray-600 hover:bg-gray-500"
+                    >
+                    Ainda não tem conta?
+                    </button>
+                    <button
+                    type="button"
+                    onClick={() => router.push("/forgot-password")}
+                    className="py-1.5 px-3 rounded bg-gray-600 hover:bg-gray-500"
+                    >
+                    Esqueceu a senha?
+                    </button>   
+                </div>
             </form>
         </div>
     );

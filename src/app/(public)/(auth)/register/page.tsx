@@ -43,7 +43,6 @@ function isValidEmail(email: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-
 function isValidCPF(cpf: string): boolean {
     cpf = cpf.replace(/\D/g, "");
     if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
@@ -142,7 +141,7 @@ export default function RegisterPage() {
             <Link href="/" className="absolute top-6 left-6 text-xl font-bold text-blue-400">
                 logo
             </Link>
-            <form onSubmit={handleSubmit} className="bg-gray-800 p-8 rounded-2xl w-full max-w-md space-y-4 shadow-lg">
+            <form onSubmit={handleSubmit} className="bg-gray-800 p-8 rounded-2xl w-full max-w-lg space-y-4 shadow-lg">
                 <h1 className="text-2xl font-bold text-blue-400 mb-4">Registrar</h1>
                 {error && <p className="text-red-500">{error}</p>}
                 <input type="name" placeholder="Nome Completo" className="w-full p-3 rounded bg-gray-700" 
@@ -151,10 +150,12 @@ export default function RegisterPage() {
                 value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
                 <input type="password" placeholder="Senha" className="w-full p-3 rounded bg-gray-700" 
                 value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
-                <input type="text" placeholder="Telefone" className="w-full p-3 rounded bg-gray-700" 
-                value={form.phone} onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value).slice(0, 17) })} />
-                <input type="text" placeholder="CPF" className="w-full p-3 rounded bg-gray-700" 
-                value={form.cpf} onChange={(e) => setForm({ ...form, cpf: formatCPF(e.target.value) })} />
+                <div className="flex flex-row gap-4">
+                    <input type="text" placeholder="Telefone" className="w-full p-3 rounded bg-gray-700" 
+                    value={form.phone} onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value).slice(0, 17) })} />
+                    <input type="text" placeholder="CPF" className="w-full p-3 rounded bg-gray-700" 
+                    value={form.cpf} onChange={(e) => { const digits = e.target.value.replace(/\D/g, "").slice(0, 11); setForm({ ...form, cpf: formatCPF(digits) }); }}/>
+                </div>
                 <div className="flex flex-row gap-4">
                     <input type="text" placeholder="PIN" className="w-full p-3 rounded bg-gray-700" 
                     value={form.pin} onChange={(e) => setForm({ ...form, pin: e.target.value.replace(/\D/g, "").slice(0, 4) })} />
@@ -166,13 +167,10 @@ export default function RegisterPage() {
                 <button type="submit" disabled={loading} className="w-full bg-blue-600 py-3 rounded hover:bg-blue-500">
                     {loading ? "Registrando..." : "Registrar"}
                 </button>
-                <button
-                type="button"
-                onClick={() => router.push("/login")}
-                className="py-1.5 px-3 rounded bg-gray-600 hover:bg-gray-500"
-                >
-                Já tem conta?
+                <button type="button" onClick={() => router.push("/login")} className="py-1.5 px-3 rounded bg-gray-600 hover:bg-gray-500">
+                    Já tem conta?
                 </button>
+                <p className="text-sm">Ao continuar, você autoriza a consulta e o registro dos seus dados no nosso sistema, e também está de acordo com a <a href="/terms" className="text-blue-400">política de privacidade</a> do nosso banco.</p>
             </form>
         </div>
     );

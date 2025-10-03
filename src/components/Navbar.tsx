@@ -1,13 +1,13 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import type { User } from "@/lib/db";
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { useEffect, useState } from "react"
+import type { User } from "@/lib/db"
 
 export default function Navbar() {
-    const pathname = usePathname();
-    const [user, setUser] = useState<User | null>(null);
+    const pathname = usePathname()
+    const [user, setUser] = useState<User | null>(null)
 
     useEffect(() => {
         async function fetchUser() {
@@ -22,12 +22,14 @@ export default function Navbar() {
         }
         }
         fetchUser();
-    }, []);
+    }, [])
 
     const navItems = [
         { icon: "", label: "Dashboard", href: "/dashboard" },
+        { icon: "", label: "Cartões", href: "/cards" },
         { icon: "", label: "Porquinhos", href: "/piggys" },
         { icon: "", label: "Finanças", href: "/loans" },
+        { icon: "", label: "Investimentos", href: "/investments" },
         { icon: "", label: "Configurações", href: "/settings" },
         { icon: "", label: "Ajuda", href: "/assistance" },
     ];

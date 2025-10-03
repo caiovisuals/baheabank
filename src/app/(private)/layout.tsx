@@ -1,6 +1,6 @@
-import Navbar from "@/components/Navbar";
-import Header from "@/components/Header";
-import "../globals.css";
+import Navbar from "@/components/Navbar"
+import Header from "@/components/Header"
+import "../globals.css"
 
 export default function PrivateLayout({children,}: Readonly<{children: React.ReactNode;}>) {
     return (

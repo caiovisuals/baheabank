@@ -80,35 +80,35 @@ export default function LandingPage() {
                 </div>
                 <div className="flex flex-row gap-2 justify-center items-stretch">
                     <div className="flex flex-col w-65 p-6 bg-white gap-4">
-                        <img src="" alt="Icone" className="size-48px" draggable="false"></img>
+                        <img src="" alt="Ícone" className="size-48px" draggable="false"></img>
                         <div>
                             <h2 className="text-lg font-semibold">Renda Fixa</h2>
                             <p>Investimentos para quem busca rentabilidade e segurança. Escolha o ideal para você.</p>
                         </div>
                     </div>
                     <div className="flex flex-col w-65 p-6 bg-white gap-4">
-                        <img src="" alt="Icone" className="size-48px" draggable="false"></img>
+                        <img src="" alt="Ícone" className="size-48px" draggable="false"></img>
                         <div>
                             <h2 className="text-lg font-semibold">Renda Variável</h2>
                             <p>Oportunidades com maior potencial de retorno, ideais para quem aceita assumir mais riscos.</p>
                         </div>
                     </div>
                     <div className="flex flex-col w-65 p-6 bg-white gap-4">
-                        <img src="" alt="Icone" className="size-48px" draggable="false"></img>
+                        <img src="" alt="Ícone" className="size-48px" draggable="false"></img>
                         <div>
                             <h2 className="text-lg font-semibold">Fundos de Investimento</h2>
                             <p>Invista de forma coletiva com gestão profissional e diversificação em diferentes ativos.</p>
                         </div>
                     </div>
                     <div className="flex flex-col w-65 p-6 bg-white gap-4">
-                        <img src="" alt="Icone" className="size-48px" draggable="false"></img>
+                        <img src="" alt="Ícone" className="size-48px" draggable="false"></img>
                         <div>
                             <h2 className="text-lg font-semibold">Previdência</h2>
                             <p>Planejamento financeiro de longo prazo para garantir tranquilidade no futuro.</p>
                         </div>
                     </div>
                     <div className="flex flex-col w-65 p-6 bg-white gap-4">
-                        <img src="" alt="Icone" className="size-48px" draggable="false"></img>
+                        <img src="" alt="Ícone" className="size-48px" draggable="false"></img>
                         <div>
                             <h2 className="text-lg font-semibold">Poupança</h2>
                             <p>A forma mais simples e segura de guardar dinheiro e manter sua reserva financeira.</p>

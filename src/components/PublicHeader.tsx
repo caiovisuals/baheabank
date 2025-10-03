@@ -22,28 +22,31 @@ export default function PublicHeader() {
 
     return (
         <header className="px-10 py-6 flex justify-between items-center">
-            <Link href="/" className="w-[22%]">
+            <Link href="/" className="w-auto lg:w-[22%]">
                 logo
             </Link>
-            <div className="w-[54%] flex items-center justify-center">
-                <nav className="flex flex-row items-center justify-center gap-8 whitespace-nowrap">
-                    <a href="/products/account">Conta</a>
-                    <a href="/products/piggys">Porquinho</a>
+            <div className="w-[54%] hidden items-center justify-center lg:flex">
+                <nav className="flex flex-row items-center justify-center gap-6 2xl:gap-8 whitespace-nowrap">
+                    <a href="/products/account" className="hidden xl:flex">Conta</a>
                     <a href="/products/cards">Cartão de Crédito</a>
+                    <a href="/products/piggys">Porquinho</a>
                     <a href="/products/loans">Empréstimos e Financiamentos</a>
                     <a href="/products/investments">Investimentos</a>
                     <a href="/products/machine">Maquininha</a>
                 </nav>
             </div>
-            <div className="w-[22%] flex flex-row items-center gap-6 justify-end">
+            <div className="w-auto lg:w-[22%] flex flex-row items-center gap-4 justify-end">
                 <Link href="/register" className="cursor-pointer">
-                    <button className="cursor-pointer">
+                    <button className="cursor-pointer text-white bg-blue-600 border-2 border-blue-600 px-4 py-2 rounded-lg hover:bg-blue-500 transition font-semibold">
                         Abra sua conta
                     </button>
                 </Link>
-                <button onClick={handleAccessAccount} className="cursor-pointer">
+                <button onClick={handleAccessAccount} className="cursor-pointer border-2 border-blue-600 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-100 transition font-semibold">
                     Acesse sua conta
                 </button>
+                <Link href="/help/contactus" className="cursor-pointer size-10 aspect-square hidden 2xl:flex">
+                    <img src="/help-icon.png" alt="Ícone de Ajuda" className="size-10 aspect-square object-contain" draggable="false"></img>
+                </Link>
             </div>
         </header>
     )

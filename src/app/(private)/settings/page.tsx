@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
-import { User } from "@/lib/db";
+import { useEffect, useState } from "react"
+import { User } from "@/lib/db"
 
 export default function Settings() {
-    const [user, setUser] = useState<User | null>(null);
-    const [loading, setLoading] = useState(true);
-    const [form, setForm] = useState({ fullName: "", email: "", phone: "" });
-    const [avatarFile, setAvatarFile] = useState<File | null>(null);
-    const [isEditing, setIsEditing] = useState(false);
+    const [user, setUser] = useState<User | null>(null)
+    const [loading, setLoading] = useState(true)
+    const [form, setForm] = useState({ fullName: "", email: "", phone: "" })
+    const [avatarFile, setAvatarFile] = useState<File | null>(null)
+    const [isEditing, setIsEditing] = useState(false)
 
     const userId = 1;
 

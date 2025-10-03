@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 import { Transaction } from "@/lib/db"
 
 export default function Dashboard() {
@@ -34,7 +34,7 @@ export default function Dashboard() {
     const formatCurrency = (value: number | null) => {
         if (value === null) return "0,00";
         return value.toFixed(2).replace(".", ",");
-    };
+    }
 
     return (
         <div className="p-10 flex flex-row justify-between items-start h-full w-full gap-6">

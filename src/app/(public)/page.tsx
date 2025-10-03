@@ -2,54 +2,14 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import PublicHeader from "@/components/PublicHeader";
 
 export default function LandingPage() {
-    const router = useRouter();
     const [activeTab, setActiveTab] = useState<"personal" | "business">("personal");
-
-    async function handleAccessAccount() {
-        try {
-            const res = await fetch("/api/me", { credentials: "include" });
-            if (res.ok) {
-                router.push("/dashboard");
-            } else {
-                router.push("/login");
-            }
-        } catch (err) {
-            console.error(err);
-            router.push("/login");
-        }
-    }
 
     return (
         <main className="size-full flex flex-col bg-gradient-to-br from-blue-50 to-white text-gray-900">
-            <header className="px-10 py-6 flex justify-between items-center">
-                <div className="w-[22%]">
-                    logo
-                </div>
-                <div className="w-[54%] flex items-center justify-center">
-                    <nav className="flex flex-row items-center justify-center gap-8 whitespace-nowrap">
-                        <a href="/products/account">Conta</a>
-                        <a href="/products/piggys">Porquinho</a>
-                        <a href="/products/cards">Cartão de Crédito</a>
-                        <a href="/products/loans">Empréstimos e Financiamentos</a>
-                        <a href="/products/investments">Investimentos</a>
-                        <a href="/products/machine">Maquininha</a>
-                    </nav>
-                </div>
-                <div className="w-[22%] flex flex-row items-center gap-6 justify-end">
-                    <Link href="/register" className="cursor-pointer">
-                        <button className="cursor-pointer">
-                            Abra sua conta
-                        </button>
-                    </Link>
-                    <button onClick={handleAccessAccount} className="cursor-pointer">
-                        Acesse sua conta
-                    </button>
-                </div>
-            </header>
-            
+            <PublicHeader/>
             {/* Hero Section */}
             <section className="flex flex-col items-center justify-center text-center px-100 h-[calc(80vh-72px)]">
                 <h1 className="text-5xl md:text-6xl font-extrabold leading-none mb-6">
@@ -93,22 +53,66 @@ export default function LandingPage() {
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">Escolha o seu cartão</h2>
                 <div className="flex flex-row gap-10 justify-center">
                     <div className="bg-amber-200 p-8 rounded-2xl">
-                        <img src="" alt=""></img>
+                        <img src="" alt="" draggable="false"></img>
                         <h2>Platinum</h2>
                         <p>Crédito e debito, pontos e alto limte.</p>
                         <button className="mt-6">Quero ter esse</button>
                     </div>
                     <div className="bg-amber-200 p-8 rounded-2xl">
-                        <img src="" alt=""></img>
+                        <img src="" alt="" draggable="false"></img>
                         <h2>Business</h2>
                         <p>Crédito e debito, pontos e alto limte.</p>
                         <button className="mt-6">Quero ter esse</button>
                     </div>
                     <div className="bg-amber-200 p-8 rounded-2xl">
-                        <img src="" alt=""></img>
+                        <img src="" alt="" draggable="false"></img>
                         <h2>Black</h2>
                         <p>Crédito e debito, pontos e alto limte.</p>
                         <button className="mt-6">Quero ter esse</button>
+                    </div>
+                </div>
+            </section>
+
+            <section className="px-6 py-24 flex flex-col items-center justify-center gap-5 bg-blue-300">
+                <div className="mb-6">
+                    <h2 className="text-3xl md:text-4xl font-bold">Mais de 1.000 investimentos ao seu alcance!</h2>
+                    <h3 className="text-2xl md:text-3xl font-semibold">Com um suporte humanizado 24 horas por dia.</h3>
+                </div>
+                <div className="flex flex-row gap-2 justify-center items-stretch">
+                    <div className="flex flex-col w-65 p-6 bg-white gap-4">
+                        <img src="" alt="Icone" className="size-48px" draggable="false"></img>
+                        <div>
+                            <h2 className="text-lg font-semibold">Renda Fixa</h2>
+                            <p>Investimentos para quem busca rentabilidade e segurança. Escolha o ideal para você.</p>
+                        </div>
+                    </div>
+                    <div className="flex flex-col w-65 p-6 bg-white gap-4">
+                        <img src="" alt="Icone" className="size-48px" draggable="false"></img>
+                        <div>
+                            <h2 className="text-lg font-semibold">Renda Variável</h2>
+                            <p>Oportunidades com maior potencial de retorno, ideais para quem aceita assumir mais riscos.</p>
+                        </div>
+                    </div>
+                    <div className="flex flex-col w-65 p-6 bg-white gap-4">
+                        <img src="" alt="Icone" className="size-48px" draggable="false"></img>
+                        <div>
+                            <h2 className="text-lg font-semibold">Fundos de Investimento</h2>
+                            <p>Invista de forma coletiva com gestão profissional e diversificação em diferentes ativos.</p>
+                        </div>
+                    </div>
+                    <div className="flex flex-col w-65 p-6 bg-white gap-4">
+                        <img src="" alt="Icone" className="size-48px" draggable="false"></img>
+                        <div>
+                            <h2 className="text-lg font-semibold">Previdência</h2>
+                            <p>Planejamento financeiro de longo prazo para garantir tranquilidade no futuro.</p>
+                        </div>
+                    </div>
+                    <div className="flex flex-col w-65 p-6 bg-white gap-4">
+                        <img src="" alt="Icone" className="size-48px" draggable="false"></img>
+                        <div>
+                            <h2 className="text-lg font-semibold">Poupança</h2>
+                            <p>A forma mais simples e segura de guardar dinheiro e manter sua reserva financeira.</p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -173,7 +177,7 @@ export default function LandingPage() {
             <footer className="px-85 py-24 flex flex-col gap-8">
                 <div className="flex flex-row gap-25">
                     <div className="flex flex-col gap-2">
-                        <span>LINKS ÚTEIS</span>
+                        <span className="font-semibold">LINKS ÚTEIS</span>
                         <nav className="flex flex-col">
                             <a href="/products/account">Conta</a>
                             <a href="/products/piggys">Porquinho</a>
@@ -184,14 +188,14 @@ export default function LandingPage() {
                         </nav>
                     </div>
                     <div className="flex flex-col gap-2">
-                        <span>DÚVIDAS</span>
+                        <span className="font-semibold">DÚVIDAS</span>
                         <nav className="flex flex-col">
                             <a href="/help/contactus">Fale conosco</a>
                             <a href="/help/negotiateyourdebt">Negocie sua dívida</a>
                         </nav>
                     </div>
                     <div className="flex flex-col gap-2">
-                        <span>SOBRE NÓS</span>
+                        <span className="font-semibold">SOBRE NÓS</span>
                         <nav className="flex flex-col">
                             <a href="/about/whoweare">Quem Somos</a>
                             <a href="/about/workwithus">Trabalhe Conosco</a>
@@ -199,16 +203,16 @@ export default function LandingPage() {
                         </nav>
                     </div>
                     <div className="flex flex-col gap-2">
-                        <span>REDES SOCIAIS</span>
+                        <span className="font-semibold">REDES SOCIAIS</span>
                         <nav className="flex flex-row gap-2">
                             <a href="https://instagram.com">
-                                <img src="social-media-icons/instagram.png" alt="Instagram" className="size-8 object-contain aspect-square"/>
+                                <img src="social-media-icons/instagram.png" alt="Instagram" className="size-7 object-contain aspect-square" draggable="false"/>
                             </a>
                             <a href="https://tiktok.com">
-                                <img src="social-media-icons/tiktok.png" alt="TikTok" className="size-8 object-contain aspect-square"/>
+                                <img src="social-media-icons/tiktok.png" alt="TikTok" className="size-7 object-contain aspect-square" draggable="false"/>
                             </a>
                             <a href="https://youtube.com">
-                                <img src="social-media-icons/youtube.png" alt="Youtube" className="size-8 object-contain aspect-square"/>
+                                <img src="social-media-icons/youtube.png" alt="Youtube" className="size-7 object-contain aspect-square" draggable="false"/>
                             </a>
                         </nav>
                     </div>
@@ -218,7 +222,7 @@ export default function LandingPage() {
                         <h1>Logo</h1>
                         <p>© {new Date().getFullYear()} BaheaBank</p>
                         <div>
-                            <p>CNPJ: 00.000.000/0000-00</p>
+                            <p><span className="font-semibold">CNPJ: </span>00.000.000/0000-00</p>
                             <p>Avenida Oceanica, Salvador, Bahia - 00000-000</p>
                         </div>
                     </div>

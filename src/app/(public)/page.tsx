@@ -11,7 +11,7 @@ export default function LandingPage() {
         <main className="size-full flex flex-col bg-gradient-to-br from-blue-50 to-white text-gray-900">
             <PublicHeader/>
             {/* Hero Section */}
-            <section className="flex flex-col items-center justify-center text-center px-100 h-[calc(80vh-72px)]">
+            <section className="flex flex-col items-center justify-center text-center px-5 md:px-20 lg:px-40 xl:px-70 2xl:px-100 h-[calc(80vh-72px)]">
                 <h1 className="text-5xl md:text-6xl font-extrabold leading-none mb-6">
                     Seu banco digital, simples, transparente e baiano.
                 </h1>
@@ -31,7 +31,7 @@ export default function LandingPage() {
             </section>
 
             {/* Features Section */}
-            <section className="px-6 py-20 bg-blue-600 text-white flex flex-col items-center gap-5">
+            <section className="px-5 py-20 bg-blue-600 text-white flex flex-col items-center gap-5">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">Tudo que você precisa de um banco. Em um só banco.</h2>
                 <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
                     <div className="p-6 bg-blue-700 rounded-2xl shadow">
@@ -49,9 +49,9 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            <section className="px-6 py-24 flex flex-col items-center justify-center gap-5">
+            <section className="px-5 py-24 flex flex-col items-center justify-center gap-5">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">Escolha o seu cartão</h2>
-                <div className="flex flex-row gap-10 justify-center">
+                <div className="flex flex-col md:flex-row gap-10 justify-center">
                     <div className="bg-amber-200 p-8 rounded-2xl">
                         <img src="" alt="" draggable="false"></img>
                         <h2>Platinum</h2>
@@ -73,51 +73,55 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            <section className="px-6 py-24 flex flex-col items-center justify-center gap-5 bg-blue-300">
+            <section className="px-5 py-24 flex flex-col items-center justify-center gap-5 bg-blue-300">
                 <div className="mb-6">
                     <h2 className="text-3xl md:text-4xl font-bold">Mais de 1.000 investimentos ao seu alcance!</h2>
                     <h3 className="text-2xl md:text-3xl font-semibold">Com um suporte humanizado 24 horas por dia.</h3>
                 </div>
-                <div className="flex flex-row gap-2 justify-center items-stretch">
-                    <div className="flex flex-col w-65 p-6 bg-white gap-4">
-                        <img src="" alt="Ícone" className="size-48px" draggable="false"></img>
-                        <div>
-                            <h2 className="text-lg font-semibold">Renda Fixa</h2>
-                            <p>Investimentos para quem busca rentabilidade e segurança. Escolha o ideal para você.</p>
+                <div className="flex flex-col 2xl:flex-row gap-4 justify-center items-stretch">
+                    <div className="flex flex-col md:flex-row gap-4 justify-center items-stretch max-[384px]:px-0 max-[480px]:px-5 px-15 sm:px-25 md:px-0">
+                        <div className="flex flex-col w-auto md:w-55 xl:w-70 2xl:w-65 p-6 bg-white gap-4 rounded-2xl">
+                            <img src="" alt="Ícone" className="lg:size-38px xl:size-48px aspect-square object-contain" draggable="false"></img>
+                            <div>
+                                <h2 className="text-lg font-semibold">Renda Fixa</h2>
+                                <p>Investimentos para quem busca rentabilidade e segurança. Escolha o ideal para você.</p>
+                            </div>
+                        </div>
+                        <div className="flex flex-col w-auto md:w-55 xl:w-70 2xl:w-65 p-6 bg-white gap-4 rounded-2xl">
+                            <img src="" alt="Ícone" className="lg:size-38px xl:size-48px aspect-square object-contain" draggable="false"></img>
+                            <div>
+                                <h2 className="text-lg font-semibold">Renda Variável</h2>
+                                <p>Oportunidades com maior potencial de retorno, ideais para quem aceita assumir mais riscos.</p>
+                            </div>
+                        </div>
+                        <div className="flex flex-col w-auto md:w-55 xl:w-70 2xl:w-65 p-6 bg-white gap-4 rounded-2xl">
+                            <img src="" alt="Ícone" className="lg:size-38px xl:size-48px aspect-square object-contain" draggable="false"></img>
+                            <div>
+                                <h2 className="text-lg font-semibold">Fundos de Investimento</h2>
+                                <p>Invista de forma coletiva com gestão profissional e diversificação em diferentes ativos.</p>
+                            </div>
                         </div>
                     </div>
-                    <div className="flex flex-col w-65 p-6 bg-white gap-4">
-                        <img src="" alt="Ícone" className="size-48px" draggable="false"></img>
-                        <div>
-                            <h2 className="text-lg font-semibold">Renda Variável</h2>
-                            <p>Oportunidades com maior potencial de retorno, ideais para quem aceita assumir mais riscos.</p>
+                    <div className="flex flex-col md:flex-row gap-4 justify-center items-stretch max-[384px]:px-0 max-[480px]:px-5 px-15 sm:px-25 md:px-0">
+                        <div className="flex flex-col w-auto md:w-55 xl:w-70 2xl:w-65 p-6 bg-white gap-4 rounded-2xl">
+                            <img src="" alt="Ícone" className="lg:size-38px xl:size-48px aspect-square object-contain" draggable="false"></img>
+                            <div>
+                                <h2 className="text-lg font-semibold">Previdência</h2>
+                                <p>Planejamento financeiro de longo prazo para garantir tranquilidade no futuro.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div className="flex flex-col w-65 p-6 bg-white gap-4">
-                        <img src="" alt="Ícone" className="size-48px" draggable="false"></img>
-                        <div>
-                            <h2 className="text-lg font-semibold">Fundos de Investimento</h2>
-                            <p>Invista de forma coletiva com gestão profissional e diversificação em diferentes ativos.</p>
-                        </div>
-                    </div>
-                    <div className="flex flex-col w-65 p-6 bg-white gap-4">
-                        <img src="" alt="Ícone" className="size-48px" draggable="false"></img>
-                        <div>
-                            <h2 className="text-lg font-semibold">Previdência</h2>
-                            <p>Planejamento financeiro de longo prazo para garantir tranquilidade no futuro.</p>
-                        </div>
-                    </div>
-                    <div className="flex flex-col w-65 p-6 bg-white gap-4">
-                        <img src="" alt="Ícone" className="size-48px" draggable="false"></img>
-                        <div>
-                            <h2 className="text-lg font-semibold">Poupança</h2>
-                            <p>A forma mais simples e segura de guardar dinheiro e manter sua reserva financeira.</p>
+                        <div className="flex flex-col w-auto md:w-55 xl:w-70 2xl:w-65 p-6 bg-white gap-4 rounded-2xl">
+                            <img src="" alt="Ícone" className="lg:size-38px xl:size-48px aspect-square object-contain" draggable="false"></img>
+                            <div>
+                                <h2 className="text-lg font-semibold">Poupança</h2>
+                                <p>A forma mais simples e segura de guardar dinheiro e manter sua reserva financeira.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section className="px-6 py-24 flex flex-col items-center justify-center gap-5">
+            <section className="px-5 py-24 flex flex-col items-center justify-center gap-5">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">Conheça nossos produtos</h2>
                 <div className="flex flex-row gap-8 justify-center">
                     <a onClick={() => setActiveTab("personal")}>Para você</a>
@@ -161,7 +165,7 @@ export default function LandingPage() {
             </section>
 
             {/* Call-to-Action Section */}
-            <section className="px-6 py-24 bg-blue-600 text-white text-center gap-5">
+            <section className="px-5 py-24 bg-blue-600 text-white text-center gap-5">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">Pronto para simplificar sua vida financeira?</h2>
                 <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
                     Junte-se a milhares de usuários que já estão economizando tempo e dinheiro com nosso banco digital.
@@ -174,10 +178,10 @@ export default function LandingPage() {
             </section>
 
             {/* Footer */}
-            <footer className="px-85 py-24 flex flex-col gap-8">
-                <div className="flex flex-row gap-25">
+            <footer className="px-5 md:px-20 lg:px-30 xl:px-50 py-24 flex flex-col gap-8">
+                <div className="flex flex-row gap-15 xl:gap-25">
                     <div className="flex flex-col gap-2">
-                        <span className="font-semibold">LINKS ÚTEIS</span>
+                        <span className="font-semibold whitespace-nowrap">LINKS ÚTEIS</span>
                         <nav className="flex flex-col">
                             <a href="/products/account">Conta</a>
                             <a href="/products/piggys">Porquinho</a>
@@ -188,14 +192,14 @@ export default function LandingPage() {
                         </nav>
                     </div>
                     <div className="flex flex-col gap-2">
-                        <span className="font-semibold">DÚVIDAS</span>
+                        <span className="font-semibold whitespace-nowrap">DÚVIDAS</span>
                         <nav className="flex flex-col">
                             <a href="/help/contactus">Fale conosco</a>
                             <a href="/help/negotiateyourdebt">Negocie sua dívida</a>
                         </nav>
                     </div>
                     <div className="flex flex-col gap-2">
-                        <span className="font-semibold">SOBRE NÓS</span>
+                        <span className="font-semibold whitespace-nowrap">SOBRE NÓS</span>
                         <nav className="flex flex-col">
                             <a href="/about/whoweare">Quem Somos</a>
                             <a href="/about/workwithus">Trabalhe Conosco</a>
@@ -203,7 +207,7 @@ export default function LandingPage() {
                         </nav>
                     </div>
                     <div className="flex flex-col gap-2">
-                        <span className="font-semibold">REDES SOCIAIS</span>
+                        <span className="font-semibold whitespace-nowrap">REDES SOCIAIS</span>
                         <nav className="flex flex-row gap-2">
                             <a href="https://instagram.com">
                                 <img src="social-media-icons/instagram.png" alt="Instagram" className="size-7 object-contain aspect-square" draggable="false"/>
@@ -220,8 +224,8 @@ export default function LandingPage() {
                 <div className="flex flex-row justify-between items-end">
                     <div className="flex flex-col gap-5">
                         <h1>Logo</h1>
-                        <p>© {new Date().getFullYear()} BaheaBank</p>
-                        <div>
+                        <p className="whitespace-nowrap">© {new Date().getFullYear()} BaheaBank</p>
+                        <div className="whitespace-nowrap">
                             <p><span className="font-semibold">CNPJ: </span>00.000.000/0000-00</p>
                             <p>Avenida Oceanica, Salvador, Bahia - 00000-000</p>
                         </div>

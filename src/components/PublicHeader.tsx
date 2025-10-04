@@ -14,14 +14,13 @@ export default function PublicHeader() {
             } else {
                 router.push("/login");
             }
-        } catch (err) {
-            console.error(err);
+        } catch {
             router.push("/login");
         }
     }
 
     return (
-        <header className="px-10 py-6 flex justify-between items-center">
+        <header className="px-5 lg:px-10 py-6 flex justify-between items-center gap-4 lg:gap-0">
             <Link href="/" className="w-auto lg:w-[22%]">
                 logo
             </Link>

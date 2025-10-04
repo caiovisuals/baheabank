@@ -36,7 +36,7 @@ export async function middleware(req: NextRequest) {
         }
 
         return NextResponse.next();
-    } catch (err) {
+    } catch {
         if (isPrivate || isAuthPage) {
             url.pathname = "/login";
             const res = NextResponse.redirect(url);
@@ -48,5 +48,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-    matcher: ["/((?!auth|public).*)"],
+    matcher: ["/((?!api|_next|auth|public).*)"],
 };

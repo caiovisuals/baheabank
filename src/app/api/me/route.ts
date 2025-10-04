@@ -1,20 +1,23 @@
 import { NextResponse } from "next/server"
 import { jwtVerify } from "jose"
+import { cookies } from "next/headers"
 import { users } from "@/lib/db"
 
 const SECRET = new TextEncoder().encode(process.env.JWT_SECRET)
 
-export async function GET(req: Request) {
-    const token = req.headers.get("cookie")?.split("token=")[1]?.split(";")[0]
-
-    if (!token) {
-        return NextResponse.json({ user: null }, { status: 401 })
-    }
-
+export async function GET() {
     try {
+        const cookieStore = await cookies()
+        console.log("Cookies disponíveis:", cookieStore.getAll())
+        const token = cookieStore.get("token")?.value
+
+        if (!token) {
+            return NextResponse.json({ user: null }, { status: 401 })
+        }
+
         const { payload } = await jwtVerify(token, SECRET)
         const user = users.find((u) => u.id === payload.id)
-    
+
         if (!user) {
             return NextResponse.json({ user: null }, { status: 404 })
         }
@@ -28,7 +31,8 @@ export async function GET(req: Request) {
         }
 
         return NextResponse.json({ user: safeUser })
-    } catch {
+    } catch (err) {
+        console.error("Erro em /api/me:", err)
         return NextResponse.json({ user: null }, { status: 401 })
     }
 }

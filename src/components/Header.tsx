@@ -9,15 +9,15 @@ export default function Header() {
 
     useEffect(() => {
         async function fetchUser() {
-        try {
-            const res = await fetch("/api/me", { credentials: "include" });
-            if (res.ok) {
-            const data = await res.json();
-            setUser(data);
+            try {
+                const res = await fetch("/api/me", { credentials: "include" });
+                if (res.ok) {
+                    const data = await res.json();
+                    setUser(data.user || null);
+                }
+            } catch (err) {
+                console.error("Erro ao buscar usuário:", err);
             }
-        } catch (err) {
-            console.error("Erro ao buscar usuário:", err);
-        }
         }
         fetchUser();
     }, []);
